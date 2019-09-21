@@ -16,16 +16,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-task myFirstTask() {
+task outputTask() {
     doFirst {
-        println 'Rakuten beauty is the best team!'
+        sleep(3000)
+        println 'executing creating new file'
+        new File("$rootDir/test.txt").createNewFile()
     }
-    println 'myFirstTask'
-}
-
-task mySecondTask() {
-    doLast {
-        println 'doLast mySecondTask'
-    }
-    println 'mySecondTask'
 }
