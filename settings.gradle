@@ -1,1 +1,3 @@
 rootProject.name = 'gradle-training-2.0'
+
+println 'from settings.gradle'

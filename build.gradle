@@ -15,3 +15,17 @@ dependencies {
     testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
     testImplementation 'junit:junit:4.12'
 }
+
+task myFirstTask() {
+    doFirst {
+        println 'Rakuten beauty is the best team!'
+    }
+    println 'myFirstTask'
+}
+
+task mySecondTask() {
+    doLast {
+        println 'doLast mySecondTask'
+    }
+    println 'mySecondTask'
+}
