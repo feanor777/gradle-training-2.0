@@ -1,3 +1,5 @@
+import java.time.LocalDate
+
 plugins {
     id 'java'
     id 'groovy'
@@ -16,10 +18,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-task outputTask() {
+task testInputOutput() {
+    inputs.property('currentDate', LocalDate.now().toString())
+    outputs.files "$rootDir/test.txt"
+
     doFirst {
-        sleep(3000)
         println 'executing creating new file'
-        new File("$rootDir/test.txt").createNewFile()
+        def file = new File("$rootDir/test.txt")
+        file.createNewFile()
+        file.write(LocalDate.now().toString())
     }
 }
