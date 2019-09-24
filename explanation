@@ -1,0 +1,37 @@
+1.What is Gradle?
+
+It's a build tool, which help us to create java project, manage dependencies, versions, test and of course build the project.
+
+We have an empty project, so how to start?
+Easy - just `gradle init`
+Explain about the generated script build.gradle, setting.gradle and main concept of gradle - tasks (show them using ./gradlew tasks --all)
+
+2. Create task by your own to show how it's easy (task it's like a function) 
+
+task myFirstTask() {
+    println 'Rakuten beauty is the best team!'
+}
+
+3. Show the gradle lifecycle 
+
+Initialization, configuration, execution.
+When each phaze is triggered.
+Should take care during creation of your tasks, because configuration phaze is always executing, and could consume a lot of time.
+
+4. Task output - the way how gradle reduces time of execution the tasks.
+How to enable output for your custom task.
+
+outputs.files "$rootDir/test.txt"
+
+That's why using clean - is antipattern in gradle, because it removes output of the task.
+
+5. Task input - in case if our output depends on something, we can use task input.
+Show that it really works by changing LocalDate to LocalDateTime
+
+6. Task caching - even more cool thing. In case if you delete your output - it puts it to the special cache.
+To enable caching for the task pls do next:
+outputs.cacheIf { true }
+
+7. Multi module project
+Show how 1 project using other as an implementation dependency.
+If have time - say about configurations.

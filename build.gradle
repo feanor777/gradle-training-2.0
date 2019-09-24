@@ -1,31 +1,22 @@
-import java.time.LocalDate
-
 plugins {
-    id 'java'
-    id 'groovy'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE' apply false
 }
 
-repositories {
-    jcenter()
-}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'io.spring.dependency-management'
 
-dependencies {
-    implementation 'com.google.guava:guava:27.1-jre'
+    repositories {
+        jcenter()
+    }
 
-    testImplementation 'org.codehaus.groovy:groovy-all:2.5.6'
+    dependencies {
+        implementation 'com.google.guava:guava:27.1-jre'
 
-    testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
-    testImplementation 'junit:junit:4.12'
-}
+        testImplementation 'org.codehaus.groovy:groovy-all:2.5.6'
 
-task testInputOutput() {
-    inputs.property('currentDate', LocalDate.now().toString())
-    outputs.files "$rootDir/test.txt"
-
-    doFirst {
-        println 'executing creating new file'
-        def file = new File("$rootDir/test.txt")
-        file.createNewFile()
-        file.write(LocalDate.now().toString())
+        testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
+        testImplementation 'junit:junit:4.12'
     }
 }
